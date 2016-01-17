@@ -52,7 +52,7 @@ function getScaledValue(canvas, interval, value) {
 }
 
 function d() {
-    drawGraph(document.getElementById("myCanvas"), valueArr);
+    drawGraph(document.getElementById("myCanvas"), valueArr, "Total value(monthly)");
     var valueArr2 = JSON.parse(JSON.stringify(valueArr));
     for (var i = 0; i < valueArr2.length; ++i) {
         if (i == 0) {
@@ -61,21 +61,29 @@ function d() {
             valueArr2[i].value = valueArr2[i].value - valueArr[i - 1].value;
         }
     }
-    drawGraph(document.getElementById("myCanvas2"), valueArr2);
+    drawGraph(document.getElementById("myCanvas2"), valueArr2, "Delta(monthly)");
     x += 0.02;
     if (x > 1.02) {
         clearInterval(intervalId);
     }
 }
 
-function drawGraph(c, valueArr) {
+function drawGraph(c, valueArr, label) {
     var bar = c.getContext("2d");
     var interval = getBestInterval(valueArr);
     bar.clearRect(0, 0, c.width, c.height);
     drawAxis(c, interval);
+    drawLabel(c, label);
     for (var i = 0; i < valueArr.length; i++) {
         drawBar(c, i, valueArr[i], interval);
     }
+}
+
+function drawLabel(c, label) {
+    var text = c.getContext("2d");
+    text.font = `${fontSize}px Arial`;
+    text.fillStyle = "#FFFFFF";
+    text.fillText(label, padding, padding - fontSize);
 }
 
 function drawBar(c, index, data, interval) {
