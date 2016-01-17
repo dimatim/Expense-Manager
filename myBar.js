@@ -45,6 +45,12 @@ function getNextRound(value) {
     return Math.ceil(abs) * Math.pow(10, zeroes) * (value < 0 ? -1 : 1);
 }
 
+function getScaledValue(canvas, interval, value) {
+    var minVal = interval[0];
+    var maxVal = interval[1];
+    return (canvas.height - padding * 2) / (maxVal + Math.abs(minVal)) * value;
+}
+
 function d() {
     drawGraph(document.getElementById("myCanvas"), valueArr);
     var valueArr2 = JSON.parse(JSON.stringify(valueArr));
@@ -76,7 +82,7 @@ function drawBar(c, index, data, interval) {
     var maxVal = interval[1];
     var minVal = interval[0];
     var negativeOffset = (c.height - padding * 2) / (maxVal + Math.abs(minVal)) *  Math.abs(minVal);
-    var height = x * (c.height - padding * 2) / (maxVal + Math.abs(minVal)) * data.value;
+    var height = x * getScaledValue(c, interval, data.value);
     var barWidth = (c.width - padding * 2 - (valueArr.length + 1) * barDistance) / valueArr.length;
     var bar = c.getContext("2d");
     bar.fillStyle = "#00FF00";
@@ -85,13 +91,13 @@ function drawBar(c, index, data, interval) {
     text.font = `${fontSize * 0.7}px Arial`;
     text.fillStyle = "#FFFFFF";
     text.fillText(data.key, padding + barDistance + index * (barWidth + barDistance), c.height - padding + fontSize - negativeOffset);
-    text.fillText(`${Math.round(x * data.value)}`, padding + barDistance + index * (barWidth + barDistance), c.height - padding - height - fontSize - negativeOffset);
+    text.fillText(`${Math.round(x * data.value)}`, padding + barDistance + index * (barWidth + barDistance), c.height - padding - height - ((data.value < 0 ? -1 : 1) * fontSize) - negativeOffset);
 }
 
 function drawAxis(c, interval) {
     var maxVal = interval[1];
     var minVal = interval[0];
-    var negativeOffset = (c.height - padding * 2) / (maxVal + Math.abs(minVal)) *  Math.abs(minVal);
+    var negativeOffset = getScaledValue(c, interval, Math.abs(minVal));
     var background = c.getContext("2d");
     background.fillStyle = "#222222";
     background.fillRect(0, 0, c.width, c.height);
@@ -104,8 +110,12 @@ function drawAxis(c, interval) {
     line.moveTo(padding, c.height - padding - negativeOffset);
     line.lineTo(c.width - padding, c.height - padding - negativeOffset);
     line.stroke();
+    var text = c.getContext("2d");
+    text.font = `${fontSize}px Arial`;
+    text.fillStyle = "#FFFFFF";
+    text.fillText("0", 5, fontSize / 2.3 + c.height - padding - negativeOffset);
     drawPositiveLines(c, negativeOffset, maxVal);
-    drawNegativeLines(c, negativeOffset, minVal);
+    drawNegativeLines(c, minVal, maxVal);
 }
 
 function drawPositiveLines(c, negativeOffset, maxVal) {
@@ -128,28 +138,24 @@ function drawPositiveLines(c, negativeOffset, maxVal) {
     }
 }
 
-function drawNegativeLines(c, negativeOffset, minVal) {
+function drawNegativeLines(c, minVal, maxVal) {
     var line = c.getContext("2d");
     line.lineWidth = 1;
     line.strokeStyle = "#666666";
-    var count = 1;
+    var count = Math.abs(minVal / (maxVal / divisions));
     var yVal;
-   /* yVal = (c.height - padding) / 1;
-    line.moveTo(padding, yVal);
-    line.lineTo(c.width - padding, yVal);
-    line.stroke();*/
     for (var i = 0; i < count; ++i) {
-        yVal = (c.height - padding) / count * i;
+        yVal = (c.height - padding) - getScaledValue(c, [minVal, maxVal], minVal / count) * i;
         line.moveTo(padding, yVal);
         line.lineTo(c.width - padding, yVal);
         line.stroke();
     }
     var text = c.getContext("2d");
     for (i = 0; i < count; ++i) {
-        yVal = (c.height - padding) / count * i;
+        yVal = (c.height - padding) - getScaledValue(c, [minVal, maxVal], minVal / count) * i;
         text.font = `${fontSize}px Arial`;
         text.fillStyle = "#FFFFFF";
-        text.fillText(normalizeThousands(Math.ceil(minVal - minVal / count * i)), 5, fontSize / 2.3 + yVal);
+        text.fillText(`-${normalizeThousands(Math.ceil(minVal - minVal / count * i))}`, 5, fontSize / 2.3 + yVal);
     }
 }
 
