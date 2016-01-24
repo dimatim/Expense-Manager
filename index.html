@@ -3,14 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Bars</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript" src="jQuery.js"></script>
+    <script src="myBar.js"></script>
 </head>
 <body>
-<canvas id="myCanvas" width="800" height="400"></canvas>
-<canvas id="myCanvas2" width="800" height="400"></canvas>
-<script src="myBar.js"></script>
+<div>
+    <canvas class="chart" id="myCanvas" width="800" height="400"></canvas>
+</div>
+<div id="outer">
+    <div id="controls">
+        <button id="toggle" class="button" onclick="removeBars(data)">Clear</button>
+        <button id="toggle2" class="button" onclick="showGraph([data])">Toggle</button>
+        <!--<textarea id="debug" >ola</textarea>-->
+    </div>
+</div>
+<div>
+    <canvas class="chart" id="animatedCanvas" width="800" height="400"></canvas>
+</div>
+<div>
+    <canvas class="chart" id="myCanvas2" width="800" height="400"></canvas>
+</div>
 <script>
     //var valueArr = [100, 123, 145, 168, 110, 113, 148];
-    var valueArr = [
+    var valueArray = [
         {key: "03.14", value: 1100},
         {key: "04.14", value: 1435},
         {key: "05.14", value: 1986},
@@ -33,7 +50,35 @@
     ];
     //maxVal = Math.max.apply(Math, valueArr);
     maxVal = 80000;
-    drawBars();
+    var data = {
+        canvas: document.getElementById("myCanvas"),
+        label: "Total value(monthly)",
+        values: valueArray
+    };
+    var valueArr2 = JSON.parse(JSON.stringify(valueArray));
+    for (var i = 0; i < valueArr2.length; ++i) {
+        if (i == 0) {
+            valueArr2[i].value = 0;
+        } else {
+            valueArr2[i].value = valueArr2[i].value - valueArray[i - 1].value;
+        }
+    }
+    var data2 = {
+    canvas: document.getElementById("myCanvas2"),
+    label: "Delta(monthly)",
+    values: valueArr2
+    };
+    var data3 = {
+        canvas: document.getElementById("animatedCanvas"),
+        label: "Total value(monthly)",
+        values: valueArray
+    };
+    var data4 = {
+        canvas: document.getElementById("animatedCanvas"),
+        label: "Delta(monthly)",
+        values: valueArr2
+    };
+    showGraph([data, data2]);
 </script>
 </body>
 </html>
