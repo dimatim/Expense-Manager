@@ -6,33 +6,20 @@ var active = false;
 var indexes = [0, 600, 1200];
 var currentIndex = 0;
 var direction = 1;
-function addPage() {
-    var iDiv = document.createElement('div');
-    iDiv.className = 'main';
-    document.getElementsByTagName('body')[0].appendChild(iDiv);
-}
-
-function scrollWin(start, height, direction) {
-    var x = 0;
-    console.log("one = ", document.getElementById("active").getBoundingClientRect().top);
-    console.log("two = ", document.body.scrollTop);
-    clearInterval(sInterval);
-    active = true;
-    sInterval = setInterval(function () {
-        console.log("will scroll");
-        window.scrollTo(0, start + direction * height * x);
-        x += 0.02;
-        if (x > 1.02) {
-            clearInterval(sInterval);
-            console.log("active is false");
-            active = false;
-        }
-    }, 10);
-}
+var dotInactiveColor = "#999999";
+var dotActiveColor = "#FFFFFF";
+var body;
+/*function addPage() {
+ var iDiv = document.createElement('div');
+ iDiv.className = 'main';
+ document.getElementsByTagName('body')[0].appendChild(iDiv);
+ }*/
 
 $(document).ready(function () {
+    body = $("body");
+    body.find("#page" + currentIndex).css("background-color", dotActiveColor);
     adaptHeight();
-    $('body').on({
+    body.on({
         'mousewheel': function (e) {
             if (e.originalEvent.wheelDelta >= 0) {
                 console.log('Scroll up');
@@ -63,27 +50,69 @@ $(document).ready(function () {
     });
 });
 
+function scrollWin(start, height, finalIndex) {
+    body.find("#page" + currentIndex).css("background-color", dotInactiveColor);
+    body.find("#page" + finalIndex).css("background-color", dotActiveColor);
+    animateBackground(finalIndex);
+    var x = 0;
+    clearInterval(sInterval);
+    active = true;
+    sInterval = setInterval(function () {
+        console.log("will scroll");
+        window.scrollTo(0, start + height * x);
+        x += 0.02;
+        if (x > 1.02) {
+            clearInterval(sInterval);
+            console.log("active is false");
+            active = false;
+        }
+    }, 10);
+}
+
+function animateBackground(pageIndex) {
+    var color;
+    switch (pageIndex) {
+        case 0:
+        case 2:
+            color = "#222222";
+            break;
+        case 1:
+            color = "#003b64";
+            break;
+
+    }
+    $('body').animate({backgroundColor: color}, 500);
+}
+
 function adaptHeight() {
     var stylesheet = document.styleSheets[0];
     var height = $(window).height();
     stylesheet.cssRules[3].style.height = height + "px";
     stylesheet.cssRules[4].style.height = height + "px";
-    indexes = [0, height, 2 * height, 3 * height];
+    indexes = [0, height, 2 * height];
 }
 
 function handleScroll(e, direction) {
     var height = $(window).height();
-    if (!active && currentIndex < indexes.length) {
-        console.log("scrolled index ", currentIndex);
-        if (currentIndex == indexes.length - 1 && direction == 1)
-            return;
-        scrollWin(indexes[currentIndex], height, direction);
-        currentIndex += direction;
-        if (currentIndex < 0)
-            currentIndex = 0;
-        else if (currentIndex >= indexes.length)
-            currentIndex = indexes.length - 1;
-    } else return;
+    if ((currentIndex == 0 && direction == -1) ||
+        (currentIndex == indexes.length - 1 && direction == 1) ||
+        active) return;
+    scrollWin(indexes[currentIndex], direction * height, currentIndex + direction);
+    currentIndex += direction;
+    if (currentIndex < 0)
+        currentIndex = 0;
+    else if (currentIndex >= indexes.length)
+        currentIndex = indexes.length - 1;
     e.preventDefault();
     e.stopPropagation();
+}
+
+function performScroll(pageIndex) {
+    var height = $(window).height();
+    var diff = pageIndex - currentIndex;
+    if (diff != 0) {
+        scrollWin(indexes[currentIndex], diff * height, pageIndex);
+        currentIndex = pageIndex;
+    }
+
 }

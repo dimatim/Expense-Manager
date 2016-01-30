@@ -17,7 +17,7 @@
 }
 
 .main {
-    background: #222222;
+    /*background: #222222;*/
     height: 600px;
     position: relative;
     left: 0;
@@ -28,7 +28,7 @@
 }
 
 .maint {
-    background: #003b64;
+    /*background: #003b64;*/
     height: 600px;
     position: relative;
     left: 0;
@@ -96,10 +96,32 @@
     background-size: contain;
 }
 
+.pager {
+    width: 40px;
+    height: auto;
+    top: 50%;
+    transform: translate(0%, -50%);
+    position: fixed;
+    float: right;
+    right: 0;
+    z-index: 1;
+}
+
+.page_indicator {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 10px;
+    background: #999999;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 body {
-/ / background: #222222;
-    background: #881d1d;
+    background: #222222;
     margin: 0;
+    overflow: hidden;
 }
 
 .chart {
