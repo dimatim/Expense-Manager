@@ -16,6 +16,8 @@ var body;
  }*/
 
 $(document).ready(function () {
+    /*$('html').animate({scrollTop:0}, 1);
+    $('body').animate({scrollTop:0}, 1);*/
     body = $("body");
     body.find("#page" + currentIndex).css("background-color", dotActiveColor);
     adaptHeight();
@@ -55,7 +57,7 @@ var spinInterval;
 function scrollWin(start, height, finalIndex) {
     if (finalIndex == 2) {
         clearInterval(spinInterval);
-        spinInterval = setInterval(function() {
+        spinInterval = setInterval(function () {
             spinGear();
         }, 50);
     } else {
@@ -132,9 +134,9 @@ function spinGear() {
     var div = document.getElementById('gear');
     deg += 5;
     deg %= 360;
-    div.style.webkitTransform = 'rotate('+deg+'deg)';
-    div.style.mozTransform    = 'rotate('+deg+'deg)';
-    div.style.msTransform     = 'rotate('+deg+'deg)';
-    div.style.oTransform      = 'rotate('+deg+'deg)';
-    div.style.transform       = 'rotate('+deg+'deg)';
+    div.style.webkitTransform = 'rotate(' + deg + 'deg)';
+    div.style.mozTransform = 'rotate(' + deg + 'deg)';
+    div.style.msTransform = 'rotate(' + deg + 'deg)';
+    div.style.oTransform = 'rotate(' + deg + 'deg)';
+    div.style.transform = 'rotate(' + deg + 'deg)';
 }
