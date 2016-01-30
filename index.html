@@ -2,28 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bars</title>
+    <title>Dmitri Timofti - GitHub page</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script type="text/javascript" src="jQuery.js"></script>
-    <script src="myBar.js"></script>
+    <script type="text/javascript" src="pageLayout.js"></script>
+    <script src="graphLib.js"></script>
 </head>
 <body>
-<div>
-    <canvas class="chart" id="myCanvas" width="800" height="400"></canvas>
-</div>
-<div id="outer">
-    <div id="controls">
-        <button id="toggle" class="button" onclick="removeBars(data)">Clear</button>
-        <button id="toggle2" class="button" onclick="showGraph([data])">Toggle</button>
-        <!--<textarea id="debug" >ola</textarea>-->
+<div class="main">
+    <div class="centered">
+        <div class="title">Dmitri Timofti</div>
+        <div class="subtitle">Software Engineer @Telenav</div>
+        <div class="horizontally_centered">
+            <a class="external_link github" href="https://github.com/dimatim"></a>
+            <a class="external_link linkedin" href="https://ro.linkedin.com/in/dmitri-timofti-9a900982"></a>
+            <a class="external_link youtube"
+               href="https://www.youtube.com/playlist?list=PLM8SkfA6w-rd9nZzTCfZHXVEwhBgNiF5Q"></a>
+        </div>
     </div>
 </div>
-<div>
-    <canvas class="chart" id="animatedCanvas" width="800" height="400"></canvas>
+<div class="maint" id="active">
+    <div class="horizontally_centered">
+        <div class="title2 big_margin">graphLib.js(work in progress)</div>
+        <canvas class="chart" id="animatedCanvas" width="800" height="400"></canvas>
+        <div class="horizontally_centered">
+            <button id="toggle" class="button" onclick="showGraph([data])">Toggle</button>
+        </div>
+    </div>
 </div>
-<div>
-    <canvas class="chart" id="myCanvas2" width="800" height="400"></canvas>
+<div class="main">
+    <div class="centered">
+        <div class="title">Work in progress...</div>
+    </div>
 </div>
 <script>
     //var valueArr = [100, 123, 145, 168, 110, 113, 148];
@@ -78,7 +88,7 @@
         label: "Delta(monthly)",
         values: valueArr2
     };
-    showGraph([data, data2]);
+    showGraph();
 </script>
 </body>
 </html>

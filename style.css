@@ -1,4 +1,6 @@
-#graph {
+.horizontally_centered {
+    display: table;
+    margin: 0 auto;
 }
 
 #outer {
@@ -14,8 +16,90 @@
     padding: 10px;*/
 }
 
-body {
+.main {
     background: #222222;
+    height: 600px;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    align-content: center;
+    width: auto;
+}
+
+.maint {
+    background: #003b64;
+    height: 600px;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.centered {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title {
+    color: white;
+    text-align: center;
+    font-size: 40pt;
+    font-family: "Trebuchet MS", sans-serif;
+    margin: 10px;
+}
+
+.title2 {
+    color: white;
+    text-align: center;
+    font-size: 30pt;
+    font-family: "Trebuchet MS", sans-serif;
+    margin: 10px;
+}
+
+.subtitle {
+    color: white;
+    text-align: center;
+    font-size: 15pt;
+    font-family: "Trebuchet MS", sans-serif;
+    margin: 10px;
+}
+
+.big_margin {
+    margin: 30px;
+}
+
+.external_link {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin: 40px;
+    text-decoration: none;
+
+}
+
+.github {
+    background: url("icons/github_icon_light.png") no-repeat center center;
+    background-size: contain;
+}
+
+.linkedin {
+    background: url("icons/linkedid_logo_white.png") no-repeat center center;
+    background-size: contain;
+}
+
+.youtube {
+    background: url("icons/youtube_logo_white.png") no-repeat center center;
+    background-size: contain;
+}
+
+body {
+/ / background: #222222;
+    background: #881d1d;
+    margin: 0;
 }
 
 .chart {
@@ -34,4 +118,22 @@ body {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+    horiz-align: center;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
 }

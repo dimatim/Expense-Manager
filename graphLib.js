@@ -7,22 +7,26 @@ var barDistance = 15;
 var fontSize = 12;
 var intervalId;
 var divisions = 5;
+var barColorPositive = "#00FF00";
+var barColorNegative = "#FF3333";
+var lineColor = "#666666";
+var textColor = "#FFFFFF";
+var backgroundColor = "#222222";
 
-function showGraph(dataArr) {
+function showGraph() {
     var x = 0;
     clearInterval(intervalId);
     intervalId = setInterval(function () {
-        //animateDataChange(x, valueArray, valueArr2);
         forward ? animator(data3, data4, x) : animator(data4, data3, x);
-        for (var i = 0; i < dataArr.length; i++) {
+        /*for (var i = 0; i < dataArr.length; i++) {
             drawFraction(dataArr[i], x);
-        }
+        }*/
         x += 0.02;
         if (x > 1.02) {
             clearInterval(intervalId);
             forward = !forward;
         }
-    }, 25);
+    }, 10);
 }
 
 function drawFraction(data, x) {
@@ -39,10 +43,10 @@ function drawFraction(data, x) {
 
 function drawAxis(canvas, valueRange, showLines) {
     var context = canvas.getContext("2d");
-    context.fillStyle = "#222222";
+    context.fillStyle = backgroundColor;
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.lineWidth = 1;
-    context.strokeStyle = "#666666";
+    context.strokeStyle = lineColor;
     context.moveTo(padding, padding);
     context.lineTo(canvas.width - padding, padding);
     context.moveTo(padding, padding);
@@ -70,19 +74,19 @@ function drawLines(c, valueRange) {
 function drawLine(canvas, valueRange, value) {
     var context = canvas.getContext("2d");
     context.lineWidth = 1;
-    context.strokeStyle = "#666666";
+    context.strokeStyle = lineColor;
     var yVal = canvas.height - getScaledValue(canvas, valueRange, value) - padding;
     context.moveTo(padding, yVal);
     context.lineTo(canvas.width - padding, yVal);
     context.font = `${fontSize}px Arial`;
-    context.fillStyle = "#FFFFFF";
+    context.fillStyle = textColor;
     context.fillText(normalizeThousands(value), 5, fontSize / 2.3 + yVal);
 }
 
 function drawLabel(c, label) {
     var context = c.getContext("2d");
     context.font = `${fontSize}px Arial`;
-    context.fillStyle = "#FFFFFF";
+    context.fillStyle = textColor;
     context.fillText(label, padding, padding - fontSize);
 }
 
@@ -94,11 +98,11 @@ function drawBar(data, fraction, index, valueRange) {
     var height = fraction * (getScaledValue(data.canvas, valueRange, info.value) - negativeOffset);
     var barWidth = (data.canvas.width - padding * 2 - (data.values.length + 1) * barDistance) / data.values.length;
     var context = data.canvas.getContext("2d");
-    context.fillStyle = info.value < 0 ? "#FF3333" : "#00FF00";
+    context.fillStyle = info.value < 0 ? barColorNegative : barColorPositive;
     context.fillRect(padding + barDistance + index * (barWidth + barDistance),
         data.canvas.height - padding - 1 - negativeOffset, barWidth, -height);
     context.font = `${fontSize * 0.7}px Arial`;
-    context.fillStyle = "#FFFFFF";
+    context.fillStyle = textColor;
     context.fillText(
         info.key,
         padding + barDistance + index * (barWidth + barDistance),
