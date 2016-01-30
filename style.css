@@ -96,6 +96,11 @@
     background-size: contain;
 }
 
+.gear {
+    background: url("icons/settings.png") no-repeat center center;
+    background-size: contain;
+}
+
 .pager {
     width: 40px;
     height: auto;

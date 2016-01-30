@@ -50,7 +50,17 @@ $(document).ready(function () {
     });
 });
 
+var spinInterval;
+
 function scrollWin(start, height, finalIndex) {
+    if (finalIndex == 2) {
+        clearInterval(spinInterval);
+        spinInterval = setInterval(function() {
+            spinGear();
+        }, 50);
+    } else {
+        clearInterval(spinInterval);
+    }
     body.find("#page" + currentIndex).css("background-color", dotInactiveColor);
     body.find("#page" + finalIndex).css("background-color", dotActiveColor);
     animateBackground(finalIndex);
@@ -115,4 +125,16 @@ function performScroll(pageIndex) {
         currentIndex = pageIndex;
     }
 
+}
+
+var deg = 0;
+function spinGear() {
+    var div = document.getElementById('gear');
+    deg += 5;
+    deg %= 360;
+    div.style.webkitTransform = 'rotate('+deg+'deg)';
+    div.style.mozTransform    = 'rotate('+deg+'deg)';
+    div.style.msTransform     = 'rotate('+deg+'deg)';
+    div.style.oTransform      = 'rotate('+deg+'deg)';
+    div.style.transform       = 'rotate('+deg+'deg)';
 }
