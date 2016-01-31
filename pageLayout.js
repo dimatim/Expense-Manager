@@ -32,11 +32,13 @@ $(document).ready(function () {
     $(document).keydown(function (e) {
         switch (e.which) {
             case 37: // left
+                direction = 0;
                 break;
             case 38: // up
                 direction = -1;
                 break;
             case 39: // right
+                direction = 0;
                 break;
             case 40: // down
                 direction = 1;
@@ -44,7 +46,8 @@ $(document).ready(function () {
             default:
                 return; // exit this handler for other keys
         }
-        handleScroll(e, direction);
+        if (direction != 0)
+            handleScroll(e, direction);
     });
 });
 
