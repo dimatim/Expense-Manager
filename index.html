@@ -12,37 +12,33 @@
 </head>
 <body>
 <div class="pager">
-    <button id="page0" class="page_indicator" onclick="performScroll(0)"></button>
+    <!--<button id="page0" class="page_indicator" onclick="performScroll(0)"></button>
     <button id="page1" class="page_indicator" onclick="performScroll(1)"></button>
-    <button id="page2" class="page_indicator" onclick="performScroll(2)"></button>
+    <button id="page2" class="page_indicator" onclick="performScroll(2)"></button>-->
 </div>
-<div class="main">
-    <div class="centered">
+<div class="page">
+    <div class="centered_container">
         <div class="title">Dmitri Timofti</div>
         <div class="subtitle">Software Engineer @Telenav</div>
-        <div class="horizontally_centered">
+        <div>
             <a class="external_link github" href="https://github.com/dimatim"></a>
-            <a class="external_link linkedin" href="https://ro.linkedin.com/in/dmitri-timofti-9a900982"></a>
+            <a class="external_link linkedin" href="https://linkedin.com/in/dmitri-timofti-9a900982"></a>
             <a class="external_link youtube"
                href="https://www.youtube.com/playlist?list=PLM8SkfA6w-rd9nZzTCfZHXVEwhBgNiF5Q"></a>
         </div>
     </div>
 </div>
-<div class="maint" id="active">
-    <div class="horizontally_centered">
+<div class="page" id="active">
+    <div class="centered_container">
         <div class="title2 big_margin">graphLib.js(work in progress)</div>
         <canvas class="chart" id="animatedCanvas" width="800" height="400"></canvas>
-        <div class="horizontally_centered">
-            <button id="toggle" class="button" onclick="showGraph([data])">Toggle</button>
-        </div>
+        <button id="toggle" class="button subtitle" onclick="showGraph([data])">Toggle</button>
     </div>
 </div>
-<div class="main">
-    <div class="centered">
+<div class="page">
+    <div class="centered_container">
         <div class="title">Work in progress...</div>
-        <div class="horizontally_centered">
-            <div id="gear" class="gear external_link"></div>
-        </div>
+        <div id="gear" class="gear"></div>
     </div>
 </div>
 <script>

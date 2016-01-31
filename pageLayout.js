@@ -3,7 +3,7 @@
  */
 var sInterval;
 var active = false;
-var indexes = [0, 600, 1200];
+var indexes = [];
 var currentIndex = 0;
 var direction = 1;
 var dotInactiveColor = "#999999";
@@ -17,10 +17,11 @@ var body;
 
 $(document).ready(function () {
     /*$('html').animate({scrollTop:0}, 1);
-    $('body').animate({scrollTop:0}, 1);*/
+     $('body').animate({scrollTop:0}, 1);*/
     body = $("body");
-    body.find("#page" + currentIndex).css("background-color", dotActiveColor);
     adaptHeight();
+    addPageIndicators();
+    body.find("#page" + currentIndex).css("background-color", dotActiveColor);
     body.on({
         'mousewheel': function (e) {
             if (e.originalEvent.wheelDelta >= 0) {
@@ -52,16 +53,17 @@ $(document).ready(function () {
     });
 });
 
-var spinInterval;
+function addPageIndicators() {
+    var container = $('.pager');
+    for (var i = 0; i < indexes.length; ++i) {
+        var button = '<button type="button" id=' + "page" + i + ' class="page_indicator" onclick="performScroll(' + i + ')">';
+        container.append(button);
+    }
+}
 
 function scrollWin(start, height, finalIndex) {
     if (finalIndex == 2) {
-        clearInterval(spinInterval);
-        spinInterval = setInterval(function () {
-            spinGear();
-        }, 50);
-    } else {
-        clearInterval(spinInterval);
+        spinGear()
     }
     body.find("#page" + currentIndex).css("background-color", dotInactiveColor);
     body.find("#page" + finalIndex).css("background-color", dotActiveColor);
@@ -86,6 +88,7 @@ function animateBackground(pageIndex) {
     switch (pageIndex) {
         case 0:
         case 2:
+        default:
             color = "#222222";
             break;
         case 1:
@@ -99,9 +102,18 @@ function animateBackground(pageIndex) {
 function adaptHeight() {
     var stylesheet = document.styleSheets[0];
     var height = $(window).height();
-    stylesheet.cssRules[3].style.height = height + "px";
-    stylesheet.cssRules[4].style.height = height + "px";
-    indexes = [0, height, 2 * height];
+    var s = stylesheet.cssRules;
+    for (var i = 0; i < s.length; ++i) {
+        if (s[i].selectorText == ".page") {
+            s[i].style.height = height + "px";
+            break;
+        }
+    }
+    var numItems = $('.page').length;
+    indexes = [0];
+    for (i = 1; i < numItems; ++i) {
+        indexes.push(height * i);
+    }
 }
 
 function handleScroll(e, direction) {
@@ -129,14 +141,22 @@ function performScroll(pageIndex) {
 
 }
 
-var deg = 0;
 function spinGear() {
-    var div = document.getElementById('gear');
-    deg += 5;
-    deg %= 360;
-    div.style.webkitTransform = 'rotate(' + deg + 'deg)';
-    div.style.mozTransform = 'rotate(' + deg + 'deg)';
-    div.style.msTransform = 'rotate(' + deg + 'deg)';
-    div.style.oTransform = 'rotate(' + deg + 'deg)';
-    div.style.transform = 'rotate(' + deg + 'deg)';
+    var $elem = $("#gear");
+    $({deg: 0}).animate({deg: 360}, {
+        duration: 2000,
+        easing: "linear",
+        step: function (now) {
+            // in the step-callback (that is fired each step of the animation),
+            // you can use the `now` paramter which contains the current
+            // animation-position (`0` up to `angle`)
+            $elem.css({
+                transform: 'rotate(' + now + 'deg)'
+            });
+        },
+        complete: function () {
+            if (currentIndex == 2)
+                spinGear();
+        }
+    });
 }

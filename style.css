@@ -1,47 +1,15 @@
-.horizontally_centered {
+.page {
     display: table;
-    margin: 0 auto;
-}
-
-#outer {
+    margin: auto;
     text-align: center;
-    width: 800px;
 }
 
-#controls {
-    display: inline-block;
-    /*margin: auto;
-    width: 60%;
-    border: 3px solid #73AD21;
-    padding: 10px;*/
-}
-
-.main {
-    /*background: #222222;*/
-    height: 600px;
-    position: relative;
-    left: 0;
-    right: 0;
-    top: 0;
-    align-content: center;
+.centered_container {
+    display: table-cell;
+    vertical-align: middle;
     width: auto;
-}
-
-.maint {
-    /*background: #003b64;*/
-    height: 600px;
-    position: relative;
-    left: 0;
-    right: 0;
-    top: 0;
-}
-
-.centered {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    height: auto;
+    margin: auto;
 }
 
 .title {
@@ -78,7 +46,11 @@
     height: 80px;
     margin: 40px;
     text-decoration: none;
+    transition: all 0.5s ease;
+}
 
+.external_link:hover {
+    opacity: 0.6;
 }
 
 .github {
@@ -99,6 +71,10 @@
 .gear {
     background: url("icons/settings.png") no-repeat center center;
     background-size: contain;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin: 40px;
 }
 
 .pager {
@@ -130,37 +106,23 @@ body {
 }
 
 .chart {
-    border: 5px solid #666666;
+    border: 1px solid white;
 }
 
 .button {
     background-color: transparent; /* Green */
-    display: table-cell;
-    border: 1px solid #666666;
+    display: block;
+    border: 1px solid white;
     border-radius: 5%;
     color: white;
     width: 100px;
     height: 40px;
-    margin: 10px;
-    text-align: center;
+    margin: 10px auto;
     text-decoration: none;
-    font-size: 16px;
+    cursor: pointer;
 }
 
-.outer {
-    display: table;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-}
-
-.middle {
-    display: table-cell;
-    vertical-align: middle;
-    horiz-align: center;
-}
-
-.inner {
-    margin-left: auto;
-    margin-right: auto;
+.button:hover {
+    background-color: #004a76;
+    transition: all 0.5s ease;
 }
