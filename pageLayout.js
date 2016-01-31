@@ -9,11 +9,6 @@ var direction = 1;
 var dotInactiveColor = "#999999";
 var dotActiveColor = "#FFFFFF";
 var body;
-/*function addPage() {
- var iDiv = document.createElement('div');
- iDiv.className = 'main';
- document.getElementsByTagName('body')[0].appendChild(iDiv);
- }*/
 
 $(document).ready(function () {
     /*$('html').animate({scrollTop:0}, 1);
@@ -62,7 +57,7 @@ function addPageIndicators() {
 }
 
 function scrollWin(start, height, finalIndex) {
-    if (finalIndex == 2) {
+    if (finalIndex == indexes.length - 1) {
         spinGear()
     }
     body.find("#page" + currentIndex).css("background-color", dotInactiveColor);
@@ -87,12 +82,14 @@ function animateBackground(pageIndex) {
     var color;
     switch (pageIndex) {
         case 0:
-        case 2:
         default:
             color = "#222222";
             break;
         case 1:
             color = "#003b64";
+            break;
+        case 2:
+            color = "#641D1D";
             break;
 
     }
@@ -155,7 +152,7 @@ function spinGear() {
             });
         },
         complete: function () {
-            if (currentIndex == 2)
+            if (currentIndex == indexes.length - 1)
                 spinGear();
         }
     });

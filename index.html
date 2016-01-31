@@ -11,16 +11,12 @@
     <script src="graphLib.js"></script>
 </head>
 <body>
-<div class="pager">
-    <!--<button id="page0" class="page_indicator" onclick="performScroll(0)"></button>
-    <button id="page1" class="page_indicator" onclick="performScroll(1)"></button>
-    <button id="page2" class="page_indicator" onclick="performScroll(2)"></button>-->
-</div>
+<div class="pager"></div>
 <div class="page">
     <div class="centered_container">
-        <div class="title">Dmitri Timofti</div>
-        <div class="subtitle">Software Engineer @Telenav</div>
-        <div>
+        <div id="name" class="title">Dmitri Timofti</div>
+        <div id="jobTitle" class="subtitle">Software Engineer @Telenav</div>
+        <div id="links">
             <a class="external_link github" href="https://github.com/dimatim"></a>
             <a class="external_link linkedin" href="https://linkedin.com/in/dmitri-timofti-9a900982"></a>
             <a class="external_link youtube"
@@ -37,7 +33,26 @@
 </div>
 <div class="page">
     <div class="centered_container">
-        <div class="title">Work in progress...</div>
+        <div class="title2 big_margin">HighlightCurvedList</div>
+        <div class="centered_container curved_list">
+            <video width="200px" height="400px" autoplay loop style="padding: 25px">
+                <source src="assets/HighlightCurvedList.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="text_container">
+            <ul class="left_aligned_text"> Features:
+                <li class="vertical_margin">• Ability to change curvature radius</li>
+                <li class="vertical_margin">• Scrolling is restricted to 1 item at a time</li>
+                <li class="vertical_margin">• Adjustable highlight item index</li>
+                <li class="vertical_margin">• Tapping on an item makes it highlighted</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="page">
+    <div class="centered_container">
+        <div class="title">Under construction...</div>
         <div id="gear" class="gear"></div>
     </div>
 </div>
