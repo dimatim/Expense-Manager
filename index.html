@@ -6,9 +6,11 @@
     <link rel="shortcut icon" href="icons/tab_icon.ico">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script type="text/javascript" src="jquery.animate-colors.js"></script>
-    <script type="text/javascript" src="pageLayout.js"></script>
-    <script src="graphLib.js"></script>
+    <script type="text/javascript" src="libs/jquery.animate-colors.js"></script>
+    <script type="text/javascript" src="libs/pageLayout.js"></script>
+    <script type="text/javascript" src="libs/drizzle.js"></script>
+    <script type="text/javascript" src="libs/misc.js"></script>
+    <script src="libs/graphLib.js"></script>
 </head>
 <body>
 <div class="pager"></div>
@@ -33,10 +35,31 @@
 </div>
 <div class="page">
     <div class="centered_container">
+        <div class="title2 big_margin">Showcase</div>
+        <table class="animationGridTable">
+            <tr>
+                <td id="super" class="animationGridCell violet">
+                    <a href="google.com" class="linkGridCell">
+                        drizzle.js
+                    </a>
+                </td>
+                <td class="animationGridCell gray linkGridCell"></td>
+                <td class="animationGridCell orange linkGridCell"></td>
+            </tr>
+            <tr>
+                <td class="animationGridCell darkBlue linkGridCell"></td>
+                <td class="animationGridCell purple linkGridCell"></td>
+                <td class="animationGridCell blue linkGridCell"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="page">
+    <div class="centered_container">
         <div class="title2 big_margin">HighlightCurvedList</div>
         <div class="centered_container curved_list">
             <video width="200px" height="400px" autoplay loop style="padding: 25px">
-                <source src="assets/HighlightCurvedList.webm" type="video/webm">
+                <source src="assets/BogusAdeptAchillestang.webm" type="video/webm">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -57,6 +80,21 @@
     </div>
 </div>
 <script>
+    var bundle = {
+        words: ['Java', 'Kotlin', 'C++', 'SQL', 'HTML5', 'JavaScript', 'CSS', 'jQuery', 'Android'],
+        //words : ['oio'],
+        numItems: 5,
+        duration: 2500,
+        container: document.getElementById("super")
+    };
+
+    callback = function (index) {
+        if (index == 2)
+            startRain(bundle);
+        else
+            stopRain('super')
+    };
+
     //var valueArr = [100, 123, 145, 168, 110, 113, 148];
     var valueArray = [
         {key: "03.14", value: 1100},

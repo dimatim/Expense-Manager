@@ -1,7 +1,6 @@
 /**
  * Created by Dima on 23-Jan-16.
  */
-var sInterval;
 var active = false;
 var indexes = [];
 var currentIndex = 0;
@@ -16,19 +15,21 @@ $(document).ready(function () {
     body = $("body");
     adaptHeight();
     addPageIndicators();
-    body.find("#page" + currentIndex).css("background-color", dotActiveColor);
     body.on({
         'mousewheel': function (e) {
             if (e.originalEvent.wheelDelta >= 0) {
-                console.log('Scroll up');
                 direction = -1;
             } else {
-                console.log('Scroll down');
                 direction = 1;
             }
             handleScroll(e, direction);
         }
     });
+    var doc = document.documentElement;
+    //var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
+    var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+    currentIndex = Math.max(0, indexes.indexOf(top));
+    performScroll(currentIndex);
     $(document).keydown(function (e) {
         switch (e.which) {
             case 37: // left
@@ -59,27 +60,21 @@ function addPageIndicators() {
     }
 }
 
-function scrollWin(start, height, finalIndex) {
-    if (finalIndex == indexes.length - 1) {
-        spinGear()
-    }
-    body.find("#page" + currentIndex).css("background-color", dotInactiveColor);
-    body.find("#page" + finalIndex).css("background-color", dotActiveColor);
-    animateBackground(finalIndex);
-    var x = 0;
-    clearInterval(sInterval);
+function scrollWin(start, height) {
     active = true;
-    sInterval = setInterval(function () {
-        console.log("will scroll");
-        window.scrollTo(0, start + height * x);
-        x += 0.02;
-        if (x > 1.02) {
-            clearInterval(sInterval);
-            console.log("active is false");
+    $({x: 0}).animate({x: 1}, {
+        duration: 500,
+        easing: "linear",
+        step: function (now) {
+            window.scrollTo(0, start + height * now);
+        },
+        complete: function () {
             active = false;
         }
-    }, 10);
+    });
 }
+
+var callback;
 
 function animateBackground(pageIndex) {
     var color;
@@ -89,9 +84,10 @@ function animateBackground(pageIndex) {
             color = "#222222";
             break;
         case 1:
+        case 2:
             color = "#003b64";
             break;
-        case 2:
+        case 3:
             color = "#641D1D";
             break;
 
@@ -117,12 +113,10 @@ function adaptHeight() {
 }
 
 function handleScroll(e, direction) {
-    var height = $(window).height();
     if ((currentIndex == 0 && direction == -1) ||
         (currentIndex == indexes.length - 1 && direction == 1) ||
         active) return;
-    scrollWin(indexes[currentIndex], direction * height, currentIndex + direction);
-    currentIndex += direction;
+    performScroll(currentIndex + direction);
     if (currentIndex < 0)
         currentIndex = 0;
     else if (currentIndex >= indexes.length)
@@ -134,29 +128,36 @@ function handleScroll(e, direction) {
 function performScroll(pageIndex) {
     var height = $(window).height();
     var diff = pageIndex - currentIndex;
+    body.find("#page" + currentIndex).css("background-color", dotInactiveColor);
+    body.find("#page" + pageIndex).css("background-color", dotActiveColor);
     if (diff != 0) {
-        scrollWin(indexes[currentIndex], diff * height, pageIndex);
+        scrollWin(indexes[currentIndex], diff * height);
         currentIndex = pageIndex;
     }
-
+    animateBackground(pageIndex);
+    setTimeout(function() {
+        if (callback != null)
+            callback(pageIndex);
+    }, 500);
 }
 
-function spinGear() {
-    var $elem = $("#gear");
-    $({deg: 0}).animate({deg: 360}, {
-        duration: 2000,
-        easing: "linear",
-        step: function (now) {
-            // in the step-callback (that is fired each step of the animation),
-            // you can use the `now` paramter which contains the current
-            // animation-position (`0` up to `angle`)
-            $elem.css({
-                transform: 'rotate(' + now + 'deg)'
-            });
-        },
-        complete: function () {
-            if (currentIndex == indexes.length - 1)
-                spinGear();
-        }
-    });
-}
+/*
+ function spinGear() {
+ var $elem = $("#gear");
+ $({deg: 0}).animate({deg: 360}, {
+ duration: 2000,
+ easing: "linear",
+ step: function (now) {
+ // in the step-callback (that is fired each step of the animation),
+ // you can use the `now` paramter which contains the current
+ // animation-position (`0` up to `angle`)
+ $elem.css({
+ transform: 'rotate(' + now + 'deg)'
+ });
+ },
+ complete: function () {
+ if (currentIndex == indexes.length - 1)
+ spinGear();
+ }
+ });
+ }*/
