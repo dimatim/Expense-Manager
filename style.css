@@ -139,7 +139,7 @@
 }
 
 body {
-    background: #222222;
+    background: #222222 url("assets/patterns/classy-fabric.png") repeat;
     margin: 0;
     overflow: hidden;
 }
@@ -180,26 +180,26 @@ body {
 }
 
 .violet {
-    background-color: #443266;
+    background: #443266 url('assets/patterns/cross-stripes.png') repeat;
 }
 
 .gray {
-    background-color: #C3C3E5;
+    background: #C3C3E5 url('assets/patterns/brushed-alum-dark.png') repeat;
 }
 
 .purple {
-    background-color: #8C489F;
+    background: #8C489F url('assets/patterns/gradient-squares.png') repeat;
 }
 
 .orange {
-    background-color: #FF9900;
+    background: #FF9900 url('assets/patterns/carbon-fibre-v2.png') repeat;
 }
 .darkBlue {
-    background-color: #3366CC;
+    background: #3366CC url('assets/patterns/classy-fabric.png') repeat;
 }
 
 .blue {
-    background-color: #6599FF;
+    background: #6599FF url('assets/patterns/black-linen-2.png') repeat;
 }
 
 .linkGridCell {
