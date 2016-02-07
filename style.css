@@ -179,6 +179,17 @@ body {
     border-spacing: 0;
 }
 
+.placeholderCell {
+    padding: 0;
+    margin: 0;
+    border-spacing: 0;
+    transition: all 1s ease;
+}
+
+.placeholderCell:hover {
+    background-color:rgba(0,0,0,0.5);
+}
+
 .violet {
     background: #443266 url('assets/patterns/cross-stripes.png') repeat;
 }
@@ -215,10 +226,11 @@ body {
     vertical-align: middle;
     padding: 0;
     margin: 0;
+    background-position: center;
 }
 
 .linkGridCell:hover {
-    background-color: white;
+    background: white url("icons/placeholders/Wet-96.png") no-repeat bottom;
     color: #007cc5;
     overflow: visible;
 }
