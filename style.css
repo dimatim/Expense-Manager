@@ -220,19 +220,19 @@ body {
     font-size: 30pt;
     font-family: "Trebuchet MS", sans-serif;
     transition: all 1s ease;
-    color: transparent;
+    color: #007cc5;
+    opacity: 0;
     text-decoration:none;
     text-align: center;
     vertical-align: middle;
     padding: 0;
     margin: 0;
-    background-position: center;
+    background: white url("icons/placeholders/Wet-96.png") no-repeat center;
 }
 
 .linkGridCell:hover {
+    opacity: 1;
     background: white url("icons/placeholders/Wet-96.png") no-repeat bottom;
-    color: #007cc5;
-    overflow: visible;
 }
 
 .droplet {
