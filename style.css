@@ -179,6 +179,35 @@ body {
     border-spacing: 0;
 }
 
+.circularTable {
+    display: table;
+    margin: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    padding: 0;
+}
+
+.circularCell {
+    padding: 0;
+    margin: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.circularCanvas {
+    display:block;
+    padding: 0;
+    margin: 0;
+    border-spacing: 0;
+}
+
+.circularLabel {
+    margin: auto;
+    font-size: 60%;
+    font-family: "Trebuchet MS", sans-serif;
+    color: #FFD034;
+}
+
 .placeholderCell {
     padding: 0;
     margin: 0;
@@ -221,16 +250,20 @@ body {
     font-family: "Trebuchet MS", sans-serif;
     transition: all 1s ease;
     color: #007cc5;
-    opacity: 0;
     text-decoration:none;
     text-align: center;
     vertical-align: middle;
     padding: 0;
     margin: 0;
+}
+
+.drizzle {
+    font-size: 200%;
+    opacity: 0;
     background: white url("icons/placeholders/Wet-96.png") no-repeat center;
 }
 
-.linkGridCell:hover {
+.drizzle:hover {
     opacity: 1;
     background: white url("icons/placeholders/Wet-96.png") no-repeat bottom;
 }

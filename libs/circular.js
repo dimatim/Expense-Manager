@@ -18,6 +18,7 @@ function startSpinner(data) {
         data['minRadians'] = Math.PI / 3;
     if (data['maxRadians'] == null)
         data['maxRadians'] = 3 / 2 * Math.PI;
+    data.maxRadius = Math.min.apply(Math, [(data.canvas.width() - data.lineWidth) / 2, (data.canvas.height() - data.lineWidth) / 2, data.maxRadius]);
     animate(data);
 }
 
