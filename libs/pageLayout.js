@@ -25,9 +25,8 @@ $(document).ready(function () {
             handleScroll(e, direction);
         }
     });
-    var doc = document.documentElement;
     //var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
-    var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+    var top = getTopOffset();
     currentIndex = Math.max(0, indexes.indexOf(top));
     performScroll(currentIndex);
     $(document).keydown(function (e) {
@@ -51,6 +50,16 @@ $(document).ready(function () {
             handleScroll(e, direction);
     });
 });
+
+function getTopOffset() {
+    var doc = document.documentElement;
+    var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+    if ($(location).attr('href').split('#').length > 1) {
+        var $_elem = $('#' + $(location).attr('href').split('#')[1]);
+        top = $_elem.offset().top;
+    }
+    return top;
+}
 
 function addPageIndicators() {
     var container = $('.pager');
@@ -135,7 +144,7 @@ function performScroll(pageIndex) {
         currentIndex = pageIndex;
     }
     animateBackground(pageIndex);
-    setTimeout(function() {
+    setTimeout(function () {
         if (callback != null)
             callback(pageIndex);
     }, 500);
