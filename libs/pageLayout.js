@@ -54,8 +54,9 @@ $(document).ready(function () {
 function getTopOffset() {
     var doc = document.documentElement;
     var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-    if ($(location).attr('href').split('#').length > 1) {
-        var $_elem = $('#' + $(location).attr('href').split('#')[1]);
+    var split = $(location).attr('href').split('#');
+    if (split.length > 1 && split[1].length > 1) {
+        var $_elem = $('#' + split[1]);
         top = $_elem.offset().top;
     }
     return top;
@@ -94,7 +95,7 @@ function animateBackground(pageIndex) {
             break;
         case 1:
         case 2:
-            color = "#003b64";
+            color = "#01243B";
             break;
         case 3:
             color = "#641D1D";

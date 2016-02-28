@@ -9,12 +9,16 @@ function stopSpinner(canvasId) {
 }
 
 function startSpinner(data) {
+    stopArray = [];
     if (data['canvas'] == null || data['colors'] == null)
         return;
     data['adjustPosition'] = 0;
-    data['radianIncrement'] = Math.PI / 180;
+    if (data['radianIncrement'] == null)
+        data['radianIncrement'] = Math.PI / 180;
     if (data['duration'] == null)
         data['duration'] = 2000;
+    if (data['fadeOutDuration'] == null)
+        data['fadeOutDuration'] = 50;
     if (data['spacing'] == null)
         data['spacing'] = 0;
     if (data['repeat'] == null)
@@ -27,7 +31,11 @@ function startSpinner(data) {
         data['minRadians'] = Math.PI / 3;
     if (data['maxRadians'] == null)
         data['maxRadians'] = 3 / 2 * Math.PI;
+    if (data['maxRadiansBackup'] == null)
+        data['maxRadiansBackup'] = data['maxRadians'];
     data.maxRadius = Math.min.apply(Math, [(data.canvas.width() - data.lineWidth) / 2, (data.canvas.height() - data.lineWidth) / 2, data.maxRadius]);
+
+    data.maxRadians = data.maxRadiansBackup;
     animate(data);
 }
 
@@ -64,7 +72,7 @@ function endSpin(data) {
     }
     data.maxRadians = 2 * Math.PI;
     $({progress: reverse ? 1 : 0}).animate({progress: .5}, {
-        duration: duration / 3,
+        duration: data.fadeOutDuration,
         easing: "linear",
         step: function (now) {
             data.adjustPosition += data.radianIncrement * dir; // speed

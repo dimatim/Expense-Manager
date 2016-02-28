@@ -9,13 +9,9 @@ function move(container, object, text) {
     object.text(text);
     var height = $(container).height() - object.outerHeight();
     var width = $(container).width() - object.outerWidth();
-    var position = $(container).offset();
-    var rh = Math.random() * height;
-    var rw = Math.random() * width;
     object.css({
-        top: rh + position.top,
-        left: rw + position.left,
-        position: 'absolute'
+        top: Math.random() * height,
+        left: Math.random() * width
     });
     animateText(object, true);
 }

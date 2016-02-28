@@ -10,8 +10,10 @@
     <script type="text/javascript" src="libs/pageLayout.js"></script>
     <script type="text/javascript" src="libs/drizzle.js"></script>
     <script type="text/javascript" src="libs/circular.js"></script>
+    <script type="text/javascript" src="libs/open.js"></script>
     <script type="text/javascript" src="libs/misc.js"></script>
     <script src="libs/graphLib.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <div class="pager"></div>
@@ -27,17 +29,79 @@
         </div>
     </div>
 </div>
-<div class="page" id="active">
-    <div class="centered_container">
-        <div class="title2 big_margin">graphLib.js(work in progress)</div>
-        <canvas class="chart" id="animatedCanvas" width="800" height="400"></canvas>
-        <button id="toggle" class="button subtitle" onclick="showGraph([data])">Toggle</button>
-    </div>
-</div>
 <div class="page" id="showcase">
     <div class="centered_container">
-        <div class="title2 big_margin">Showcase</div>
-        <table class="animationGridTable">
+        <div id="anchorDiv" style="width: 50%; height: 50%;">
+            <div class="expandable_cell b1">
+                <div id="super" class="expandable_cell_preview active">
+                </div>
+                <div class="expandable_cell_content"></div>
+            </div>
+            <div class="expandable_cell b2">
+                <div class="expandable_cell_preview active">
+                    <table class="circularTable">
+                        <tr>
+                            <td class="circularCell">
+                                <canvas class="circularCanvas" id="circular1"></canvas>
+                            </td>
+                            <td class="circularCell">
+                                <p class="circularLabel">Circular</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="circularCell">
+                                <canvas class="circularCanvas" id="circular3"></canvas>
+                            </td>
+                            <td class="circularCell">
+                                <canvas class="circularCanvas" id="circular4"></canvas>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="expandable_cell_content"></div>
+            </div>
+            <div class="expandable_cell b3">
+                <div class="expandable_cell_preview emptyCellText">
+                    graphLib
+                </div>
+                <div class="expandable_cell_content">
+                    <div class="title2 big_margin">graphLib.js(work in progress)</div>
+                    <canvas class="chart" id="animatedCanvas" width="800" height="400"></canvas>
+                    <button id="toggle" class="button subtitle">Toggle</button>
+                </div>
+            </div>
+            <div class="expandable_cell g3">
+                <div class="expandable_cell_preview img-container">
+                    <img src="icons/placeholders/Sci-Fi-96.png"/>
+                </div>
+            </div>
+            <div class="expandable_cell g2">
+                <div class="expandable_cell_preview emptyCellText">
+                    Showcase
+                </div>
+            </div>
+            <div class="expandable_cell g1">
+                <div class="expandable_cell_preview img-container">
+                    <img src="icons/placeholders/Sci-Fi-96.png"/>
+                </div>
+            </div>
+            <div class="expandable_cell o1">
+                <div class="expandable_cell_preview img-container">
+                    <img src="icons/placeholders/Sci-Fi-96.png"/>
+                </div>
+            </div>
+            <div class="expandable_cell o2">
+                <div class="expandable_cell_preview img-container">
+                    <img src="icons/placeholders/Spy-96.png"/>
+                </div>
+            </div>
+            <div class="expandable_cell o3">
+                <div class="expandable_cell_preview img-container">
+                    <img src="icons/placeholders/Documentary-96.png"/>
+                </div>
+            </div>
+        </div>
+        <!--<table class="animationGridTable">
             <tr>
                 <td id="super" class="animationGridCell violet">
                     <a href="https://github.com/dimatim/dimatim.github.io/blob/master/libs/drizzle.js"
@@ -46,7 +110,7 @@
                     </a>
                 </td>
                 <td class="animationGridCell darkBlue placeholderCell">
-                    <!--<img src="icons/placeholders/Sci-Fi-96.png"/>-->
+                    &lt;!&ndash;<img src="icons/placeholders/Sci-Fi-96.png"/>&ndash;&gt;
                     <a href="https://github.com/dimatim/dimatim.github.io/blob/master/libs/circular.js"
                        class="linkGridCell circularTable">
                         <table class="circularTable">
@@ -85,7 +149,7 @@
                     <img src="icons/placeholders/Documentary-96.png"/>
                 </td>
             </tr>
-        </table>
+        </table>-->
     </div>
 </div>
 <div class="page">

@@ -28,15 +28,15 @@
     text-indent: -1em;
     color: white;
     font-size: 20pt;
-    font-family: "Trebuchet MS", sans-serif;
+    font-family: "Jura", sans-serif;
     text-align: left;
 }
 
 .title {
     color: white;
     text-align: center;
-    font-size: 40pt;
-    font-family: "Trebuchet MS", sans-serif;
+    font-size: 50pt;
+    font-family: "Jura", sans-serif;
     margin: 10px;
 }
 
@@ -44,16 +44,15 @@
     color: white;
     text-align: center;
     font-size: 30pt;
-    font-family: "Trebuchet MS", sans-serif;
+    font-family: "Jura", sans-serif;
     margin: 10px;
 }
 
 .subtitle {
     color: white;
     text-align: center;
-    font-size: 15pt;
-    font-family: "Trebuchet MS", sans-serif;
-    margin: 10px;
+    font-size: 20pt;
+    font-family: "Jura", sans-serif;
 }
 
 .big_margin {
@@ -95,6 +94,46 @@
 .curved_list {
     background: url('assets/nexus5_frame.png') no-repeat center center;
     background-size: contain;
+}
+
+.expandable_cell {
+    position: absolute;
+    cursor: pointer;
+}
+
+.expandable_cell_preview {
+    position: absolute;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center;
+}
+
+.img-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    text-align:center; /* Align center inline elements */
+    font: 0/0 a;
+}
+.img-container:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.img-container img {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.emptyCellText {
+    color: white;
+    font-size: 250%;
+    font-family: "Jura", sans-serif;
 }
 
 @keyframes rotation {
@@ -166,19 +205,6 @@ body {
     transition: all 0.5s ease;
 }
 
-.animationGridTable {
-    margin: auto;
-    border-collapse: separate;
-    border-spacing: 10px;
-    padding: 0;
-}
-
-.animationGridCell {
-    padding: 0;
-    margin: 0;
-    border-spacing: 0;
-}
-
 .circularTable {
     display: table;
     margin: auto;
@@ -203,16 +229,9 @@ body {
 
 .circularLabel {
     margin: auto;
-    font-size: 60%;
-    font-family: "Trebuchet MS", sans-serif;
+    font-size: 150%;
+    font-family: "Jura", sans-serif;
     color: #FFD034;
-}
-
-.placeholderCell {
-    padding: 0;
-    margin: 0;
-    border-spacing: 0;
-    transition: all 1s ease;
 }
 
 .placeholderCell:hover {
@@ -242,12 +261,48 @@ body {
     background: #6599FF url('assets/patterns/black-linen-2.png') repeat;
 }
 
+.b1 {
+    background: #01243B url('assets/patterns/black-linen-2.png') repeat;
+}
+
+.b2 {
+    background: #336699 url('assets/patterns/black-linen-2.png') repeat;
+}
+
+.b3 {
+    background: #5288DB url('assets/patterns/black-linen-2.png') repeat;
+}
+
+.o1 {
+    background: #771100 url('assets/patterns/black-linen-2.png') repeat;
+}
+
+.o2 {
+    background: #CC6633 url('assets/patterns/black-linen-2.png') repeat;
+}
+
+.o3 {
+    background: #FF9900 url('assets/patterns/black-linen-2.png') repeat;
+}
+
+.g1 {
+    background: #336633 url('assets/patterns/black-linen-2.png') repeat;
+}
+
+.g2 {
+    background: #669933 url('assets/patterns/black-linen-2.png') repeat;
+}
+
+.g3 {
+    background: #66CC35 url('assets/patterns/black-linen-2.png') repeat;
+}
+
 .linkGridCell {
     z-index: 1;
     position: relative;
     display: table-cell;
     font-size: 30pt;
-    font-family: "Trebuchet MS", sans-serif;
+    font-family: "Jura", sans-serif;
     transition: all 1s ease;
     color: #007cc5;
     text-decoration:none;
@@ -271,5 +326,6 @@ body {
 .droplet {
     position: absolute;
     font-size: 15pt;
+    font-family: "Jura", sans-serif;
     color: white;
 }
