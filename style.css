@@ -97,8 +97,10 @@
 }
 
 .curved_list {
+    float: left;
     display: table-cell;
-    background: url('https://raw.githubusercontent.com/Telenav/NodeFlow/master/gif/demo.gif') no-repeat center center;
+    background: url('assets/nexus7_frame.png') no-repeat center center;
+    background-size: contain;
 }
 
 .expandable_cell {
