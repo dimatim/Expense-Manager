@@ -115,6 +115,22 @@
     align-items: center;
 }
 
+@keyframes bounce {
+    0%, 100% {
+        transform: translate(3px, -3px);
+    }
+    50% {
+        transform: translate(-3px, 3px);
+    }
+}
+
+.floating {
+    animation-duration: 1.6s;
+    animation-name: bounce;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
 .img-container {
     position: absolute;
     top: 0;
@@ -122,9 +138,10 @@
     left: 0;
     right: 0;
 
-    text-align:center; /* Align center inline elements */
+    text-align: center; /* Align center inline elements */
     font: 0/0 a;
 }
+
 .img-container:before {
     content: ' ';
     display: inline-block;
@@ -233,7 +250,7 @@ body {
 }
 
 .circularCanvas {
-    display:block;
+    display: block;
     padding: 0;
     margin: 0;
     border-spacing: 0;
@@ -247,7 +264,7 @@ body {
 }
 
 .placeholderCell:hover {
-    background-color:rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .violet {
@@ -265,6 +282,7 @@ body {
 .orange {
     background: #FF9900 url('assets/patterns/carbon-fibre-v2.png') repeat;
 }
+
 .darkBlue {
     background: #3366CC url('assets/patterns/classy-fabric.png') repeat;
 }
@@ -326,7 +344,7 @@ body {
     font-family: "Jura", sans-serif;
     transition: all 1s ease;
     color: #007cc5;
-    text-decoration:none;
+    text-decoration: none;
     text-align: center;
     vertical-align: middle;
     padding: 0;
