@@ -94,11 +94,10 @@ function animateBackground(pageIndex) {
             color = "#222222";
             break;
         case 1:
-        case 2:
             color = "#01243B";
             break;
-        case 3:
-            color = "#641D1D";
+        case 2:
+            color = "#3D3242";
             break;
 
     }

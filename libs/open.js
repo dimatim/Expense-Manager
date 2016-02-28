@@ -27,19 +27,24 @@ function resize(cell, config) {
                 duration: config.duration
             });
             $(cell).find('.expandable_cell_content').css({
-                left: grow ? (-finalSize[0] + cellSize[0]) / 2 : 0
+                left: grow ? (-finalSize[0] + cellSize[0]) / 2 : 0,
+                opacity: grow ? 0 : 1
             });
             $(cell).find('.expandable_cell_content').animate({
                 left: grow ? 0 : (-finalSize[0] + cellSize[0]) / 2,
                 opacity: grow ? 1 : 0
             }, {
+                duration: config.duration,
+                specialEasing: {
+                    left: "linear",
+                    opacity: grow ? "easeInExpo" : "easeOutExpo"
+                },
                 start: function () {
                     if (grow) $(this).show();
                 },
                 complete: function () {
                     if (!grow) $(this).hide();
-                },
-                duration: config.duration
+                }
             });
             blockScroll = grow;
         },
@@ -99,12 +104,14 @@ function initOpen(config) {
         var row = Math.floor(index / columns);
         var column = index % columns;
         $(elem).click(function () {
-            if (grow) {
-                cellOffset = $(elem).offset();
-                clickedIndex = index;
+            if (!$(elem).hasClass('disabled')) {
+                if (grow) {
+                    cellOffset = $(elem).offset();
+                    clickedIndex = index;
+                }
+                if (clickedIndex == index)
+                    resize($(elem), config)
             }
-            if (clickedIndex == index)
-                resize($(elem), config)
         });
         $(elem).find('.expandable_cell_content').hide();
         $(elem).css({

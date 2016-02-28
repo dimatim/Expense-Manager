@@ -17,17 +17,22 @@
     vertical-align: middle;
     height: 100%;
     width: 500px;
-    padding: 5%;
+    padding: 0 5%;
     text-align: center;
 }
 
 .left_aligned_text {
-    list-style: none;
     margin-left: 0;
-    padding-left: 1em;
-    text-indent: -1em;
     color: white;
     font-size: 20pt;
+    font-family: "Jura", sans-serif;
+    text-align: left;
+}
+
+.category {
+    margin-left: 0;
+    color: white;
+    font-size: 25pt;
     font-family: "Jura", sans-serif;
     text-align: left;
 }
@@ -92,8 +97,8 @@
 }
 
 .curved_list {
-    background: url('assets/nexus5_frame.png') no-repeat center center;
-    background-size: contain;
+    display: table-cell;
+    background: url('https://raw.githubusercontent.com/Telenav/NodeFlow/master/gif/demo.gif') no-repeat center center;
 }
 
 .expandable_cell {
@@ -131,8 +136,13 @@
 }
 
 .emptyCellText {
-    color: white;
     font-size: 250%;
+    font-family: "Jura", sans-serif;
+}
+
+.emptyCellTextSmall {
+    color: white;
+    font-size: 150%;
     font-family: "Jura", sans-serif;
 }
 
@@ -229,7 +239,7 @@ body {
 
 .circularLabel {
     margin: auto;
-    font-size: 150%;
+    font-size: 175%;
     font-family: "Jura", sans-serif;
     color: #FFD034;
 }
@@ -262,38 +272,47 @@ body {
 }
 
 .b1 {
+    color: white;
     background: #01243B url('assets/patterns/black-linen-2.png') repeat;
 }
 
 .b2 {
+    color: white;
     background: #336699 url('assets/patterns/black-linen-2.png') repeat;
 }
 
 .b3 {
+    color: white;
     background: #5288DB url('assets/patterns/black-linen-2.png') repeat;
 }
 
 .o1 {
-    background: #771100 url('assets/patterns/black-linen-2.png') repeat;
+    color: white;
+    background: #BF381A url('assets/patterns/black-linen-2.png') repeat;
 }
 
 .o2 {
+    color: white;
     background: #CC6633 url('assets/patterns/black-linen-2.png') repeat;
 }
 
 .o3 {
+    color: white;
     background: #FF9900 url('assets/patterns/black-linen-2.png') repeat;
 }
 
 .g1 {
+    color: white;
     background: #336633 url('assets/patterns/black-linen-2.png') repeat;
 }
 
 .g2 {
+    color: white;
     background: #669933 url('assets/patterns/black-linen-2.png') repeat;
 }
 
 .g3 {
+    color: white;
     background: #66CC35 url('assets/patterns/black-linen-2.png') repeat;
 }
 

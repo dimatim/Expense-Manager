@@ -12,6 +12,7 @@
     <script type="text/javascript" src="libs/circular.js"></script>
     <script type="text/javascript" src="libs/open.js"></script>
     <script type="text/javascript" src="libs/misc.js"></script>
+    <script type="text/javascript" src="libs/jquery-ui.min.js"></script>
     <script src="libs/graphLib.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
 </head>
@@ -33,12 +34,15 @@
     <div class="centered_container">
         <div id="anchorDiv" style="width: 50%; height: 50%;">
             <div class="expandable_cell b1">
-                <div id="super" class="expandable_cell_preview active">
+                <div id="super" class="expandable_cell_preview emptyCellText">
+                    <div class="centered_container">
+                        drizzle
+                        <img src="icons/small/moderate_rain_32px.png" style="vertical-align: -10%">
+                    </div>
                 </div>
-                <div class="expandable_cell_content"></div>
             </div>
             <div class="expandable_cell b2">
-                <div class="expandable_cell_preview active">
+                <div class="expandable_cell_preview">
                     <table class="circularTable">
                         <tr>
                             <td class="circularCell">
@@ -62,9 +66,12 @@
             </div>
             <div class="expandable_cell b3">
                 <div class="expandable_cell_preview emptyCellText">
-                    graphLib
+                    <div class="centered_container">
+                        graphLib
+                        <img src="icons/small/futures_32px.png" style="vertical-align: -10%">
+                    </div>
                 </div>
-                <div class="expandable_cell_content">
+                <div class="expandable_cell_content centered_container">
                     <div class="title2 big_margin">graphLib.js(work in progress)</div>
                     <canvas class="chart" id="animatedCanvas" width="800" height="400"></canvas>
                     <button id="toggle" class="button subtitle">Toggle</button>
@@ -75,19 +82,19 @@
                     <img src="icons/placeholders/Sci-Fi-96.png"/>
                 </div>
             </div>
-            <div class="expandable_cell g2">
+            <div class="expandable_cell disabled g2">
                 <div class="expandable_cell_preview emptyCellText">
                     Showcase
                 </div>
             </div>
             <div class="expandable_cell g1">
                 <div class="expandable_cell_preview img-container">
-                    <img src="icons/placeholders/Sci-Fi-96.png"/>
+                    <img src="icons/placeholders/Documentary-96.png"/>
                 </div>
             </div>
             <div class="expandable_cell o1">
                 <div class="expandable_cell_preview img-container">
-                    <img src="icons/placeholders/Sci-Fi-96.png"/>
+                    <img src="icons/placeholders/Western-96.png"/>
                 </div>
             </div>
             <div class="expandable_cell o2">
@@ -96,8 +103,26 @@
                 </div>
             </div>
             <div class="expandable_cell o3">
-                <div class="expandable_cell_preview img-container">
-                    <img src="icons/placeholders/Documentary-96.png"/>
+                <div class="expandable_cell_preview emptyCellText">
+                    <div class="centered_container">
+                        NodeFlow
+                        <img src="icons/small/android_os_32px.png" style="vertical-align: -10%">
+                    </div>
+                </div>
+                <div class="expandable_cell_content centered_container">
+                    <div class="title big_margin">NodeFlow</div>
+                    <div style="display: inline-block;">
+                        <div class="curved_list" style="width:180px; height:300px;">
+                            <img style="width:280px; height:450px;" src="assets/nexus7_frame.png">
+                        </div>
+                        <div class="text_container left_aligned_text">
+                            <p class="category">Description</p>
+                            NodeFlow is an Android library that provides a simple way to visualize hierarchical
+                            content. Perfect for displaying items that are organized in categories / subcategories.
+                            <p class="category">Requirements</p>
+                            Android 4.0+ (Ice Cream Sandwich and later)
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -150,25 +175,6 @@
                 </td>
             </tr>
         </table>-->
-    </div>
-</div>
-<div class="page">
-    <div class="centered_container">
-        <div class="title2 big_margin">HighlightCurvedList</div>
-        <div class="centered_container curved_list">
-            <video width="200px" height="400px" autoplay loop style="padding: 25px">
-                <source src="assets/BogusAdeptAchillestang.webm" type="video/webm">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <div class="text_container">
-            <ul class="left_aligned_text"> Features:
-                <li class="vertical_margin">• Ability to change curvature radius</li>
-                <li class="vertical_margin">• Scrolling is restricted to 1 item at a time</li>
-                <li class="vertical_margin">• Adjustable highlight item index</li>
-                <li class="vertical_margin">• Tapping on an item makes it highlighted</li>
-            </ul>
-        </div>
     </div>
 </div>
 <div class="page">
