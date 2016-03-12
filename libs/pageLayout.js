@@ -5,13 +5,12 @@ var active = false;
 var indexes = [];
 var currentIndex = 0;
 var direction = 1;
-var dotInactiveColor = "#999999";
-var dotActiveColor = "#FFFFFF";
+var dotInactiveColor = "#E8E8E8";
+var dotActiveColor = "#F32A18";
 var body;
+var transDuration = 750;
 
-$(document).ready(function () {
-    /*$('html').animate({scrollTop:0}, 1);
-     $('body').animate({scrollTop:0}, 1);*/
+$(window).load(function () {
     body = $("body");
     adaptHeight();
     addPageIndicators();
@@ -19,13 +18,14 @@ $(document).ready(function () {
         'mousewheel': function (e) {
             if (e.originalEvent.wheelDelta >= 0) {
                 direction = -1;
+                animateRedDash(false);
             } else {
                 direction = 1;
+                animateRedDash(true);
             }
             handleScroll(e, direction);
         }
     });
-    //var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
     var top = getTopOffset();
     currentIndex = Math.max(0, indexes.indexOf(top));
     performScroll(currentIndex);
@@ -72,8 +72,9 @@ function addPageIndicators() {
 
 function scrollWin(start, height) {
     active = true;
+
     $({x: 0}).animate({x: 1}, {
-        duration: 500,
+        duration: transDuration,
         easing: "linear",
         step: function (now) {
             window.scrollTo(0, start + height * now);
@@ -86,12 +87,12 @@ function scrollWin(start, height) {
 
 var callback;
 
-function animateBackground(pageIndex) {
+/*function animateBackground(pageIndex) {
     var color;
     switch (pageIndex) {
         case 0:
         default:
-            color = "#222222";
+            color = "#202835";
             break;
         case 1:
             color = "#01243B";
@@ -101,8 +102,8 @@ function animateBackground(pageIndex) {
             break;
 
     }
-    $('body').animate({backgroundColor: color}, 500);
-}
+    $('body').animate({backgroundColor: color}, transDuration);
+}*/
 
 function adaptHeight() {
     var stylesheet = document.styleSheets[0];
@@ -140,33 +141,30 @@ function performScroll(pageIndex) {
     body.find("#page" + currentIndex).css("background-color", dotInactiveColor);
     body.find("#page" + pageIndex).css("background-color", dotActiveColor);
     if (diff != 0) {
+        if ((currentIndex == 0 && pageIndex > 0) || (currentIndex > 0 && pageIndex == 0)) {
+            animateRedDash(pageIndex > 0);
+        }
         scrollWin(indexes[currentIndex], diff * height);
         currentIndex = pageIndex;
     }
-    animateBackground(pageIndex);
+    //animateBackground(pageIndex);
     setTimeout(function () {
         if (callback != null)
             callback(pageIndex);
-    }, 500);
+    }, transDuration);
 }
 
-/*
- function spinGear() {
- var $elem = $("#gear");
- $({deg: 0}).animate({deg: 360}, {
- duration: 2000,
- easing: "linear",
- step: function (now) {
- // in the step-callback (that is fired each step of the animation),
- // you can use the `now` paramter which contains the current
- // animation-position (`0` up to `angle`)
- $elem.css({
- transform: 'rotate(' + now + 'deg)'
- });
- },
- complete: function () {
- if (currentIndex == indexes.length - 1)
- spinGear();
- }
- });
- }*/
+function animateRedDash(down) {
+    $('#red_dash_path').animate({
+        strokeDashoffset: down ? -1170 : 0
+    }, {
+        duration: transDuration
+    });
+    /*$({p: 300}).animate({p: 1250}, {
+     duration: transDuration * .66,
+     easing: "linear",
+     step: function (now) {
+     $('#path3402').css("stroke-dasharray", now + ', 1170');
+     }
+     });*/
+}

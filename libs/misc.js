@@ -1,7 +1,17 @@
 /**
  * Created by Dima on 06-Feb-16.
  */
-$(document).ready(function () {
+$(window).load(function () {
+    setTimeout(function () {
+        $("#content_div").animate({
+            opacity: 1
+        }, 1000, "linear");
+        $('#red_dash_path').animate({
+            strokeDashoffset: 0
+        }, {
+            duration: 500
+        });
+    }, 500);
 
     var w = $(window).width();
     var h = $(window).height();
@@ -12,6 +22,13 @@ $(document).ready(function () {
     $('#anchorDiv').css({
         height: cellSize[1] * rows,
         width: cellSize[0] * columns
+    });
+
+    $('#red_dash_svg').css({
+        left: (w - w / 2) / 2,
+        top: (h - h / 2),
+        height: h / 2,
+        width: w / 2
     });
 
     var config = {
@@ -109,7 +126,7 @@ $(document).ready(function () {
     };
 
     $('#toggle').on({
-        'click' : function (e) {
+        'click': function (e) {
             showGraph([data]);
             e.stopPropagation();
         }

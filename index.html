@@ -17,121 +17,152 @@
     <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<div class="pager"></div>
-<div class="page">
-    <div class="centered_container">
-        <div id="name" class="title">Dmitri Timofti</div>
-        <div id="jobTitle" class="subtitle">Software Engineer @Telenav</div>
-        <div id="links">
-            <a class="external_link github" href="https://github.com/dimatim"></a>
-            <a class="external_link linkedin" href="https://linkedin.com/in/dmitri-timofti-9a900982"></a>
-            <a class="external_link youtube"
-               href="https://www.youtube.com/playlist?list=PLM8SkfA6w-rd9nZzTCfZHXVEwhBgNiF5Q"></a>
-        </div>
-    </div>
-</div>
-<div class="page" id="showcase">
-    <div class="centered_container">
-        <div id="anchorDiv" style="width: 50%; height: 50%;">
-            <div class="expandable_cell b1">
-                <div id="super" class="expandable_cell_preview emptyCellText">
-                    <div class="centered_container">
-                        drizzle
-                        <img src="icons/small/moderate_rain_32px.png" style="vertical-align: -10%">
-                    </div>
-                </div>
+<div id="content_div">
+    <div class="pager"></div>
+    <div class="page">
+        <svg
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+                id="red_dash_svg"
+                viewBox="0 0 960.00001 540.00001"
+                preserveAspectRatio="none">
+
+            <g
+                    transform="translate(0,-512.36216)"
+                    id="layer1">
+                <path
+                        id="red_dash_path"
+                        d="m 330,515.97116 300,0 c 301.36065,0 300.00001,416.391 0,416.391 -78.27152,0 -149.82143,0 -150.20087,60.15208 -0.24815,39.33856 0.37944,60.35296 0.37944,60.35296"
+                        style="fill:none;fill-rule:evenodd;stroke:#F32A18;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"></path>
+            </g>
+        </svg>
+        <div class="centered_container">
+            <div id="name" class="title">Dmitri Timofti</div>
+            <div id="jobTitle" class="subtitle">Software Engineer</div>
+            <div id="shortDesc" class="shortDesc">with a passion for innovation, creativity,<br>
+                interactive visuals and clean<br>
+                user experiences
             </div>
-            <div class="expandable_cell b2">
-                <div class="expandable_cell_preview">
-                    <table class="circularTable">
-                        <tr>
-                            <td class="circularCell">
-                                <canvas class="circularCanvas" id="circular1"></canvas>
-                            </td>
-                            <td class="circularCell">
-                                <p class="circularLabel">Circular</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="circularCell">
-                                <canvas class="circularCanvas" id="circular3"></canvas>
-                            </td>
-                            <td class="circularCell">
-                                <canvas class="circularCanvas" id="circular4"></canvas>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="expandable_cell_content"></div>
-            </div>
-            <div class="expandable_cell b3">
-                <div class="expandable_cell_preview emptyCellText">
-                    <div class="centered_container">
-                        graphLib
-                        <img src="icons/small/futures_32px.png" style="vertical-align: -10%">
-                    </div>
-                </div>
-                <div class="expandable_cell_content centered_container">
-                    <div class="title2 big_margin">graphLib.js(work in progress)</div>
-                    <canvas class="chart" id="animatedCanvas" width="800" height="400"></canvas>
-                    <button id="toggle" class="button subtitle">Toggle</button>
-                </div>
-            </div>
-            <div class="expandable_cell g3">
-                <div class="expandable_cell_preview img-container">
-                    <img class="floating" src="icons/placeholders/Sci-Fi-96.png"/>
-                </div>
-            </div>
-            <div class="expandable_cell disabled g2">
-                <div class="expandable_cell_preview emptyCellText">
-                    Showcase
-                </div>
-            </div>
-            <div class="expandable_cell g1">
-                <div class="expandable_cell_preview img-container">
-                    <img src="icons/placeholders/Documentary-96.png"/>
-                </div>
-            </div>
-            <div class="expandable_cell o1">
-                <div class="expandable_cell_preview img-container">
-                    <img src="icons/placeholders/Western-96.png"/>
-                </div>
-            </div>
-            <div class="expandable_cell o2">
-                <div class="expandable_cell_preview img-container">
-                    <img src="icons/placeholders/Spy-96.png"/>
-                </div>
-            </div>
-            <div class="expandable_cell o3">
-                <div class="expandable_cell_preview emptyCellText">
-                    <div class="centered_container">
-                        NodeFlow
-                        <img src="icons/small/android_os_32px.png" style="vertical-align: -10%">
-                    </div>
-                </div>
-                <div class="expandable_cell_content centered_container">
-                    <div class="title big_margin">NodeFlow</div>
-                    <div style="display: inline-block;">
-                        <div class="curved_list" style="width:230px; height:450px;">
-                            <img style="padding-top: 82px;width:176px; height:280px;" src="https://raw.githubusercontent.com/Telenav/NodeFlow/master/gif/demo.gif">
-                        </div>
-                        <div class="text_container left_aligned_text">
-                            <p class="category">Description</p>
-                            NodeFlow is an Android library that provides a simple way to visualize hierarchical
-                            content. Perfect for displaying items that are organized in categories / subcategories.
-                            <p class="category">Requirements</p>
-                            Android 4.0+ (Ice Cream Sandwich and later)
-                        </div>
-                    </div>
-                </div>
+            <div id="links">
+                <!--<a class="external_link github" href="https://github.com/dimatim"></a>
+                <a class="external_link linkedin" href="https://linkedin.com/in/dmitri-timofti-9a900982"></a>
+                <a class="external_link youtube"
+                   href="https://www.youtube.com/playlist?list=PLM8SkfA6w-rd9nZzTCfZHXVEwhBgNiF5Q"></a>-->
+                <a class="external_link" target="_blank"
+                   href="https://linkedin.com/in/dmitri-timofti-9a900982">LINKEDIN</a><!--
+                --><a class="red_dot">•</a><!--
+                --><a class="external_link" target="_blank" href="https://github.com/dimatim">GITHUB</a><!--
+                --><a class="red_dot">•</a><!--
+                --><a class="external_link" target="_blank" href="mailto:dim882@gmail.com">EMAIL</a><!--
+                --><a class="red_dot">•</a><a class="external_link" target="_blank"
+                                              href="https://www.facebook.com/dmitri.timofti">FACEBOOK</a>
             </div>
         </div>
     </div>
-</div>
-<div class="page">
-    <div class="centered_container">
-        <div class="title">Under construction...</div>
-        <div id="gear" class="gear"></div>
+    <div class="page" id="showcase">
+        <div class="centered_container">
+            <div id="anchorDiv" style="width: 50%; height: 50%;">
+                <div class="expandable_cell b1">
+                    <div id="super" class="expandable_cell_preview emptyCellText">
+                        <div class="centered_container">
+                            drizzle
+                            <img src="icons/small/moderate_rain_32px.png" style="vertical-align: -10%">
+                        </div>
+                    </div>
+                </div>
+                <div class="expandable_cell b2">
+                    <div class="expandable_cell_preview">
+                        <table class="circularTable">
+                            <tr>
+                                <td class="circularCell">
+                                    <canvas class="circularCanvas" id="circular1"></canvas>
+                                </td>
+                                <td class="circularCell">
+                                    <p class="circularLabel">Circular</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="circularCell">
+                                    <canvas class="circularCanvas" id="circular3"></canvas>
+                                </td>
+                                <td class="circularCell">
+                                    <canvas class="circularCanvas" id="circular4"></canvas>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="expandable_cell_content"></div>
+                </div>
+                <div class="expandable_cell b3">
+                    <div class="expandable_cell_preview emptyCellText">
+                        <div class="centered_container">
+                            graphLib
+                            <img src="icons/small/futures_32px.png" style="vertical-align: -10%">
+                        </div>
+                    </div>
+                    <div class="expandable_cell_content centered_container">
+                        <div class="title2 big_margin">graphLib.js(work in progress)</div>
+                        <canvas class="chart" id="animatedCanvas" width="800" height="400"></canvas>
+                        <button id="toggle" class="button subtitle">Toggle</button>
+                    </div>
+                </div>
+                <div class="expandable_cell g3">
+                    <div class="expandable_cell_preview img-container">
+                        <img class="floating" src="icons/placeholders/Sci-Fi-96.png"/>
+                    </div>
+                </div>
+                <div class="expandable_cell disabled g2">
+                    <div class="expandable_cell_preview emptyCellText">
+                        Showcase
+                    </div>
+                </div>
+                <div class="expandable_cell g1">
+                    <div class="expandable_cell_preview img-container">
+                        <img src="icons/placeholders/Documentary-96.png"/>
+                    </div>
+                </div>
+                <div class="expandable_cell o1">
+                    <div class="expandable_cell_preview img-container">
+                        <img src="icons/placeholders/Western-96.png"/>
+                    </div>
+                </div>
+                <div class="expandable_cell o2">
+                    <div class="expandable_cell_preview img-container">
+                        <img src="icons/placeholders/Spy-96.png"/>
+                    </div>
+                </div>
+                <div class="expandable_cell o3">
+                    <div class="expandable_cell_preview emptyCellText">
+                        <div class="centered_container">
+                            NodeFlow
+                            <img src="icons/small/android_os_32px.png" style="vertical-align: -10%">
+                        </div>
+                    </div>
+                    <div class="expandable_cell_content centered_container">
+                        <div class="title big_margin">NodeFlow</div>
+                        <div style="display: inline-block;">
+                            <div class="curved_list" style="width:230px; height:450px;">
+                                <img style="padding-top: 82px;width:176px; height:280px;"
+                                     src="https://raw.githubusercontent.com/Telenav/NodeFlow/master/gif/demo.gif">
+                            </div>
+                            <div class="text_container left_aligned_text">
+                                <p class="category">Description</p>
+                                NodeFlow is an Android library that provides a simple way to visualize hierarchical
+                                content. Perfect for displaying items that are organized in categories / subcategories.
+                                <p class="category">Requirements</p>
+                                Android 4.0+ (Ice Cream Sandwich and later)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="centered_container">
+            <div class="title">Under construction...</div>
+            <div id="gear" class="gear"></div>
+        </div>
     </div>
 </div>
 <script>

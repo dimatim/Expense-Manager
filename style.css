@@ -38,26 +38,35 @@
 }
 
 .title {
-    color: white;
+    color: #E8E8E8;
     text-align: center;
-    font-size: 50pt;
-    font-family: "Jura", sans-serif;
-    margin: 10px;
+    font-size: 7vh;
+    font-family: "Segoe UI", sans-serif;
+    margin: 17vh 0 0 0;
 }
 
 .title2 {
-    color: white;
+    color: #E8E8E8;
     text-align: center;
     font-size: 30pt;
-    font-family: "Jura", sans-serif;
+    font-family: "Segoe UI", sans-serif;
     margin: 10px;
 }
 
 .subtitle {
-    color: white;
+    color: #E8E8E8;
     text-align: center;
-    font-size: 20pt;
-    font-family: "Jura", sans-serif;
+    font-size: 3vh;
+    margin: 1vh 0 0 0;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.shortDesc {
+    color: #bebebe;
+    text-align: center;
+    font-size: 1.8vh;
+    font-style: italic;
+    font-family: "Segoe UI", sans-serif;
 }
 
 .big_margin {
@@ -70,15 +79,39 @@
 
 .external_link {
     display: inline-block;
-    width: 80px;
-    height: 80px;
-    margin: 40px;
-    text-decoration: none;
     transition: all 0.5s ease;
+    color: #E8E8E8;
+    font-size: 2vh;
+    margin: 1vh;
+    text-decoration: none;
+    font-family: "Segoe UI", sans-serif;
 }
 
 .external_link:hover {
-    opacity: 0.6;
+    color: #F32A18;
+}
+
+#links {
+    margin-top: 10vh;
+}
+
+.red_dot {
+    display: inline-block;
+    color: #F32A18;
+    text-decoration: none;
+    font-size: 2.22vh;
+    cursor:default;
+}
+
+#red_dash_svg {
+    position: absolute;
+    z-index: -1;
+}
+
+#red_dash_path {
+    stroke-dasharray: 300, 1170;
+    stroke-dashoffset: 300px;/*is 0 at page load*/
+    /*animation: dash 5s ease-out both;*/
 }
 
 .github {
@@ -200,16 +233,21 @@
     width: 10px;
     height: 10px;
     margin: 10px;
-    background: #999999;
+    background: #E8E8E8;
     border: none;
     border-radius: 50%;
     cursor: pointer;
 }
 
 body {
-    background: #222222 url("assets/patterns/classy-fabric.png") repeat;
+    /*background: #222222 url("assets/patterns/classy-fabric.png") repeat;*/
     margin: 0;
+    background-color: #202835;
     overflow: hidden;
+}
+
+#content_div {
+    opacity: 0;
 }
 
 .chart {
