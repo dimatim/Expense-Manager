@@ -1,0 +1,58 @@
+$white: #E8E8E8
+$white_shade: #BEBEBE
+$red: #F32A18
+$def_font: "Segoe UI", sans-serif
+
+.white_text
+  color: $white
+  font-family: $def_font
+
+
+.left_aligned_text
+  @extend .white_text
+  margin-left: 0
+  font-size: 20pt
+  text-align: left
+
+.category
+  @extend .white_text
+  margin-left: 0
+  font-size: 25pt
+  text-align: left
+
+.title
+  @extend .white_text
+  text-align: center
+  font-size: 7vh
+  margin: 17vh 0 0 0
+
+.title2
+  @extend .white_text
+  text-align: center
+  font-size: 30pt
+  margin: 10px
+
+.subtitle
+  @extend .white_text
+  text-align: center
+  font-size: 3vh
+  margin: 1vh 0 0 0
+
+.shortDesc
+  color: $white_shade
+  text-align: center
+  font-size: 1.8vh
+  font-style: italic
+  font-family: $def_font
+
+.external_link
+  @extend .white_text
+  display: inline-block
+  transition: all 0.5s ease
+  font-size: 2vh
+  margin: 1vh
+  text-decoration: none
+
+.external_link:hover
+  color: $red
+
